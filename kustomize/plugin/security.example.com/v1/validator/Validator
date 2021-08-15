@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Version 4.11.2 of yq (https://github.com/mikefarah/yq)
+
+# Read stdin into variable
+x=`cat -`
+
+# Split YAML documents into individual JSON files
+# Script adapted from https://stackoverflow.com/a/67876873
+while [[ -n "$x" ]]
+do ary+=("${x%%---*}")
+if [[ "$x" =~ --- ]]; then x="${x#*---}"; else x=''; fi
+done
+for yml in "${ary[@]}";
+do
+    # Find name of document and check it's what we are looking for
+    fileName=`echo "$yml" | yq eval '.metadata.name' -`;
+    if [ $fileName = 'security-config' ]
+    then
+        # Find the IP address we want to check exists
+        ipResult=`echo "$yml" | yq eval '.config.office_ips.[] | select(. == "4.4.4.4")' -`
+
+        # Exit if result is empty
+        if [[ ! $ipResult ]]
+        then
+            >&2 echo "Important IP addresses missing from config: 4.4.4.4"
+            exit 1
+        fi
+    fi
+done

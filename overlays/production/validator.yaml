@@ -1,0 +1,4 @@
+apiVersion: security.example.com/v1
+kind: Validator
+metadata:
+  name: does-not-matter

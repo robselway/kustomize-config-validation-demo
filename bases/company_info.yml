@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: custom-config
+metadata:
+  name: company-info
+  labels:
+    region: UK
+config:
+  trading_name: ExampleCorp
+  vat_number: 123456

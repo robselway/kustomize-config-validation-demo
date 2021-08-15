@@ -1,0 +1,7 @@
+- op: add
+  path: "/config/office_ips/-"
+  value: 4.4.4.4
+
+- op: add
+  path: "/config/office_ips/-"
+  value: 5.5.5.5

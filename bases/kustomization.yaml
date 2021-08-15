@@ -1,0 +1,4 @@
+resources:
+- security_config.yml
+- company_info.yml
+

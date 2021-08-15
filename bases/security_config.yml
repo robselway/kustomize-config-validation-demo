@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: custom-config
+metadata:
+  name: security-config
+config:
+  office_ips:
+  - 1.1.1.1
+  - 2.2.2.2
