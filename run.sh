@@ -4,7 +4,7 @@ mkdir -p .outputs
 rm -rf .outputs/*
 
 # Config for Kustomize to discover plugins in right place
-export XDG_CONFIG_HOME=/home/rob/Documents/repos/kustomize-test
+export XDG_CONFIG_HOME=$(pwd)
 
 # Split YAML documents into individual JSON files
 # Script adapted from https://stackoverflow.com/a/67876873
